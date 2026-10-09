@@ -1,29 +1,103 @@
 aid: haulest
-name: Haulest (Panaweb LLC)
-description: 'Haulest (Panaweb LLC) is a company surfaced via the API Evangelist harvest backlog (source:
-  new-submission) and added to the network as a stub for full-pipeline profiling.'
+name: Haulest
+image: https://haulest.com/og?title=Your+next+chapter.+Less+moving+stress.&src=%2Fphotos%2Fgen%2Fhome.jpg&eyebrow=Haulest&text=Know+what+to+budget.+Find+the+right+help.+Plan+the+move%2C+then+call+%2B1+%28866%29+961-9682+or+send+From+and+To.+Haulest+is+not+a+carrier.
+description: Haulest, operated by Panaweb LLC (Dover, Delaware), publishes moving-cost
+  ranges, route facts, reviewed movers, mover licence checks, moving guides and checklists
+  for the US, Canada and the UK, and exposes them to AI assistants through a no-auth
+  remote MCP server at https://haulest.com/mcp with eight tools including estimate_moving_cost,
+  find_movers and request_moving_quotes. Haulest is not a carrier and does not operate
+  trucks.
 url: https://raw.githubusercontent.com/api-evangelist/haulest/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:new-submission
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-09 (local-v5; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-09'
 modified: '2026-10-09'
 tags:
 - Company
-apis: []
+- Moving
+- Relocation
+- Cost Estimation
+- MCP
+- Movers
+- Consumer
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Security
+  url: security/haulest-vulnerability-disclosure.yml
+- type: LLMsTxt
+  url: llms/haulest-llms.txt
+- type: ToolCrosswalk
+  url: mcp/haulest-tool-crosswalk.yml
+- type: MCPServer
+  url: mcp/haulest-mcp.yml
+- type: SecurityTxt
+  url: well-known/haulest-security.txt
+- type: WellKnown
+  url: well-known/haulest-well-known.yml
+- type: Hosts
+  url: hosts/haulest-hosts.yml
+- type: Vendors
+  url: vendors/haulest-vendors.yml
+- type: Newsroom
+  url: https://haulest.com/news
+- type: VulnerabilityDisclosure
+  url: security/haulest-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/haulest-domain-security.yml
 - type: Website
   url: https://haulest.com
 - type: Documentation
   url: https://haulest.com/developers/mcp
+- type: ChangeLog
+  url: https://haulest.com/changelog
+- type: TermsOfService
+  url: https://haulest.com/terms
+- type: PrivacyPolicy
+  url: https://haulest.com/privacy
+- type: LLMsTxt
+  url: https://haulest.com/llms.txt
+apis:
+- aid: haulest:haulest-mcp
+  name: Haulest MCP Server
+  description: Remote streamable-HTTP MCP server (no auth) exposing moving cost estimates,
+    route facts, mover search, mover profiles, licence checks, guide search, checklists
+    and quote requests.
+  humanURL: https://haulest.com/developers/mcp
+  baseURL: https://haulest.com/mcp
+  tags:
+  - MCP
+  - Moving
+  properties:
+  - type: Documentation
+    url: https://haulest.com/developers/mcp
+  - type: MCPServerCard
+    url: https://haulest.com/.well-known/mcp.json
 x-submission-notes: No-auth MCP server for moving-cost estimates
-x-submission-probe: root 200; .well-known/mcp.json 200; llms.txt 200; POST /mcp tools/list returns tools
-  (estimate_moving_cost); invented path 404
+x-submission-probe: root 200; .well-known/mcp.json 200; llms.txt 200; POST /mcp tools/list
+  returns tools (estimate_moving_cost); invented path 404
 x-submitted-by: info@haulest.com (apis.io/add, 2026-10-08)
+x-coverage:
+  state: unreadable
+  reason: no-machine-readable-spec
+  method: derived
+  generated: '2026-10-09'
+  generator: derive-coverage.py (pre-flight evidence)
+  detail: the company publishes developer documentation but serves no machine-readable
+    contract from it
+  evidence:
+  - url: https://haulest.com/mcp
+    status: null
+  - url: https://haulest.com
+    status: 200
+x-enrichment:
+  date: '2026-10-09'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v5

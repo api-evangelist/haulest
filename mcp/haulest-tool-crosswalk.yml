@@ -1,0 +1,27 @@
+generated: '2026-10-09'
+method: derived
+source: mcp/haulest-mcp-tools-list.json
+crosswalk: []
+mcp_only:
+- tool: estimate_moving_cost
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: get_route_facts
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: find_movers
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: get_mover_profile
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: check_mover_licence
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: search_moving_guides
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: get_moving_checklist
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+- tool: request_moving_quotes
+  reason: No public REST/OpenAPI surface; tool exists only on the MCP server
+surfaces:
+  mcp: https://haulest.com/mcp
+  openapi: null
+coverage:
+  tools: 8
+  rest_operations: 0
